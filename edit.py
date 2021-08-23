@@ -264,6 +264,26 @@ app.layout = html.Div([
         
         html.Div(className='four columns', children=[
         dcc.Tabs(id='tabs', children=[
+            dcc.Tab(label='Legend', children=[
+                html.Div(style=styles['tab'], children=[
+                    html.P(children=['Classes:',
+                    html.Div(),
+                    html.Button('Actor', style={'background-color': '#fb8072', 'fontSize': 13}),
+                    html.Button('Action', style={'background-color': '#b3de69', 'fontSize': 13}),
+                    html.Button('Issue', style={'background-color': '#80b1d3', 'fontSize': 13}),
+                    html.Button('Method', style={'background-color': '#ffffb3', 'fontSize': 13}),
+                    html.Button('Place', style={'background-color': '#fdb462', 'fontSize': 13}),
+                    html.Button('Publication', style={'background-color': '#8dd3c7', 'fontSize': 13}),
+                    html.Button('Literal/Descriptive', style={'background-color': '#d9d9d9', 'fontSize': 13}),
+                    ]),
+                    html.P(children=['On Selection:',
+                    html.Div(),
+                    html.Button('Selected Node/Edge(s)', style={'background-color': '#bc80bd', 'fontSize': 13}),
+                    html.Div(),
+                    html.Button('Edges To Selected Node', style={'background-color': '#fccde5', 'fontSize': 13}),
+                    html.Button('Edges From Selected Node', style={'background-color': '#bebada', 'fontSize': 13}),
+                    ])])
+                ]),
             
             dcc.Tab(label='Selected Node Info', children=[
                 html.Div(style=styles['tab'], children=[
@@ -369,26 +389,7 @@ app.layout = html.Div([
                     
                     ])
                 ]),
-             dcc.Tab(label='Legend', children=[
-                html.Div(style=styles['tab'], children=[
-                    html.P(children=['Classes:',
-                    html.Div(),
-                    html.Button('Actor', style={'background-color': '#fb8072', 'fontSize': 13}),
-                    html.Button('Action', style={'background-color': '#b3de69', 'fontSize': 13}),
-                    html.Button('Issue', style={'background-color': '#80b1d3', 'fontSize': 13}),
-                    html.Button('Method', style={'background-color': '#ffffb3', 'fontSize': 13}),
-                    html.Button('Place', style={'background-color': '#fdb462', 'fontSize': 13}),
-                    html.Button('Publication', style={'background-color': '#8dd3c7', 'fontSize': 13}),
-                    html.Button('Literal/Descriptive', style={'background-color': '#d9d9d9', 'fontSize': 13}),
-                    ]),
-                    html.P(children=['On Selection:',
-                    html.Div(),
-                    html.Button('Selected Node/Edge(s)', style={'background-color': '#bc80bd', 'fontSize': 13}),
-                    html.Div(),
-                    html.Button('Edges To Selected Node', style={'background-color': '#fccde5', 'fontSize': 13}),
-                    html.Button('Edges From Selected Node', style={'background-color': '#bebada', 'fontSize': 13}),
-                    ])])
-                ])
+             
             
         ]),
     ]),
