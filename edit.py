@@ -101,7 +101,7 @@ all_style = [
                 'style': {'width':'4',
                     'content': 'data(label)',
                     'text-rotation':'autorotate',
-
+                    'opacity': '0.7',
                     'curve-style': 'bezier',
                     'target-arrow-shape': 'vee',
                     'arrow-scale': 2
@@ -472,7 +472,7 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                 'style': {'width':'4',
                     'content': 'data(label)',
                     'text-rotation':'autorotate',
-
+                    'opacity': '0.7',
                     'curve-style': 'bezier',
                     'target-arrow-shape': 'vee',
                     'arrow-scale': 2
