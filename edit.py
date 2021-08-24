@@ -686,7 +686,7 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
         ]
         new_elements = new_nodes + new_edges
             
-        return (new_elements, {'name': 'cose', 'spacingFactor':'4'}, stylesheet)
+        return (new_elements, {'name': 'cose-bilkent', 'spacingFactor':'3'}, stylesheet)
         
     if (button_id == 'aapath-button'):
         qres = g.query(
@@ -752,8 +752,8 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
             for index, row in data.iterrows()
         ]
         new_elements = new_nodes + new_edges
-            
-        return (new_elements, {'name': 'dagre', 'spacingFactor':'4'}, stylesheet) 
+        layout = {'name': 'dagre', 'spacingFactor':'5'}
+        return (new_elements, layout, stylesheet)
     
     if (button_id == 'search-button') and search_term:
         
@@ -860,25 +860,40 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                 'style': {
                     'display': 'element'
                 }}]
-       
-        return (new_elements, {'name': 'dagre', 'spacingFactor':'2.5'}, stylesheet)
+        if len(new_elements) < 200:
+                layout = {'name': 'dagre', 'spacingFactor':'5'}
+        else:
+                layout = {'name': 'cose-bilkent', 'spacingFactor':'3'}
+        return (new_elements, layout, stylesheet)
     
     if (button_id =='remove-button') and elements and data_n and data_e:
             nodes_to_remove = {ele_data['id'] for ele_data in data_n}
             edges_to_remove = {ele_data['id'] for ele_data in data_e}
             intermediate_elements = [ele for ele in elements if ele['data']['id'] not in nodes_to_remove]
             new_elements = [ele for ele in intermediate_elements if ele['data']['id'] not in edges_to_remove]
-            return (new_elements, {'name': 'dagre', 'spacingFactor':'2.5'}, stylesheet)
+            if len(new_elements) < 200:
+                layout = {'name': 'dagre', 'spacingFactor':'5'}
+            else:
+                layout = {'name': 'cose-bilkent', 'spacingFactor':'3'}
+            return (new_elements, layout, stylesheet)
         
     if (button_id =='remove-button') and elements and data_n:
             nodes_to_remove = {ele_data['id'] for ele_data in data_n}
             new_elements = [ele for ele in elements if ele['data']['id'] not in nodes_to_remove]
-            return (new_elements, {'name': 'dagre', 'spacingFactor':'2.5'}, stylesheet)
+            if len(new_elements) < 200:
+                layout = {'name': 'dagre', 'spacingFactor':'5'}
+            else:
+                layout = {'name': 'cose-bilkent', 'spacingFactor':'3'}
+            return (new_elements, layout, stylesheet)
 
     if (button_id =='remove-button') and elements and data_e:
             edges_to_remove = {ele_data['id'] for ele_data in data_e}
             new_elements = [ele for ele in elements if ele['data']['id'] not in edges_to_remove]
-            return (new_elements, {'name': 'dagre', 'spacingFactor':'2.5'}, stylesheet)
+            if len(new_elements) < 200:
+                layout = {'name': 'dagre', 'spacingFactor':'5'}
+            else:
+                layout = {'name': 'cose-bilkent', 'spacingFactor':'3'}
+            return (new_elements, layout, stylesheet)
     
     if (button_id =='expand-button') and elements and data_n:
         df = pd.DataFrame(columns=['source', 'interaction', 'target'])
@@ -991,10 +1006,10 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
             ]
             
             elements = new_nodes + new_edges
-            if len(elements) < 250:
+            if len(elements) < 200:
                 layout = {'name': 'dagre', 'spacingFactor':'5'}
             else:
-                layout = {'name': 'cose', 'spacingFactor':'2.5'}
+                layout = {'name': 'cose-bilkent', 'spacingFactor':'3'}
         return (elements, layout, stylesheet)
     if (button_id =='focus-button') and data_n:
         df = pd.DataFrame(columns=['source', 'interaction', 'target'])
@@ -1101,10 +1116,10 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
             ]
             
             elements = new_nodes + new_edges
-            if len(elements) < 250:
+            if len(elements) < 200:
                 layout = {'name': 'dagre', 'spacingFactor':'5'}
             else:
-                layout = {'name': 'cose', 'spacingFactor':'2.5'}
+                layout = {'name': 'cose-bilkent', 'spacingFactor':'3'}
         return (elements, layout, stylesheet)
     if (button_id == 'nodes-checklist'):
         stylesheet = all_style
@@ -1146,9 +1161,12 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
         return (elements, layout, stylesheet)
     
     if (button_id == 'node-button') and nname and nclass:
-        new_id = nname.replace(' ', '_') + 'foo'
+        new_id = nname.replace(' ', '_') + str(np.random.randint(1000, 9999))
         new_label = nname
-        new_classes = [nclass]
+        print(nclass)
+        print(len(nclass))
+        new_classes = nclass.split(', ')
+        print(new_classes)
         new_node = {'data': {'id': new_id, 'label': new_label}, 'classes': new_classes}
         elements += [new_node]
         return (elements, layout, stylesheet)
@@ -1230,6 +1248,7 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                           'target-arrow-color':'#bc80bd',
                           'width':'7'}})
         return (elements, layout, stylesheet)
+    
     return (elements, layout, stylesheet)
 
 
