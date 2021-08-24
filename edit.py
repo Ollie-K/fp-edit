@@ -856,7 +856,7 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                 'display': 'none'
             }}) 
         stylesheet = stylesheet + [{
-                'selector': 'node[label="%s"]' % search_term,
+                'selector': 'node[id="%s"]' % search_term,
                 'style': {
                     'display': 'element'
                 }}]
