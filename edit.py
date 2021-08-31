@@ -99,8 +99,14 @@ all_style = [
                 {
                 'selector': 'edge',
                 'style': {'width':'4',
+                      #     'line-fill':'linear-gradient',
+                      #                           "line-gradient-stop-colors": "black grey",
+                      # "line-gradient-stop-positions": "5 60",
+                      
                     'content': 'data(label)',
                     'text-rotation':'autorotate',
+                                        'text-opacity': '1',
+
                     'opacity': '0.7',
                     'curve-style': 'bezier',
                     'target-arrow-shape': 'vee',
@@ -127,6 +133,9 @@ all_style = [
             'selector': '.Actor',
             'style': {
                 'background-color': '#fb8072',
+                'border-color':'black',
+                                'border-width':'1',
+
                 'content': 'data(label)',
                     'text-wrap': 'ellipsis',
                     'text-max-width': '200px',
@@ -141,6 +150,9 @@ all_style = [
             'selector': '.Action',
             'style': {
                 'background-color': '#b3de69',
+                'border-color':'black',
+                                'border-width':'1',
+
                 'content': 'data(label)',
                     'text-wrap': 'ellipsis',
                     'text-max-width': '200px',
@@ -155,6 +167,9 @@ all_style = [
             'selector': '.Issue',
             'style': {
                 'background-color': '#80b1d3',
+                'border-color':'black',
+                                'border-width':'1',
+
                 'content': 'data(label)',
                     'text-wrap': 'ellipsis',
                     'text-max-width': '200px',
@@ -169,6 +184,9 @@ all_style = [
                 'selector': '.Method',
                 'style':{
                     'background-color': '#ffffb3',
+                    'border-color':'black',
+                                    'border-width':'1',
+
                     'content': 'data(label)',
                     'text-wrap': 'ellipsis',
                     'text-max-width': '200px',
@@ -183,6 +201,9 @@ all_style = [
             'selector': '.Place',
             'style': {
                 'background-color': '#fdb462',
+                'border-color':'black',
+                                'border-width':'1',
+
                     'content': 'data(label)',
                     'text-wrap': 'ellipsis',
                     'text-max-width': '200px',
@@ -197,6 +218,9 @@ all_style = [
             'selector': '.Publication',
             'style': {
                 'background-color': '#8dd3c7',
+                'border-color':'black',
+                                'border-width':'1',
+
                     'content': 'data(label)',
                     'text-wrap': 'ellipsis',
                     'text-max-width': '200px',
@@ -211,6 +235,9 @@ all_style = [
             'selector': '.Literal',
             'style': {
                 'background-color': '#d9d9d9',
+                'border-color':'black',
+                                'border-width':'1',
+
                     'content': 'data(label)',
                     'text-wrap': 'ellipsis',
                     'text-max-width': '200px',
@@ -226,6 +253,9 @@ all_style = [
             'selector': ':selected',
             'style': {
                 'background-color': '#bc80bd',
+                'border-color':'black',
+                                'border-width':'1',
+
                     'content': 'data(label)',
                     'text-wrap': 'ellipsis',
                     'text-max-width': '200px',
@@ -470,9 +500,13 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                 {
                 'selector': 'edge',
                 'style': {'width':'4',
+                      # 'line-fill':'linear-gradient',
+                      #                           "line-gradient-stop-colors": "black grey",
+                      # "line-gradient-stop-positions": "5 60",
                     'content': 'data(label)',
                     'text-rotation':'autorotate',
                     'opacity': '0.7',
+                    'text-opacity': '1',
                     'curve-style': 'bezier',
                     'target-arrow-shape': 'vee',
                     'arrow-scale': 2
@@ -498,6 +532,9 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
             'selector': '.Actor',
             'style': {
                 'background-color': '#fb8072',
+                'border-color':'black',
+                                'border-width':'1',
+
                 'content': 'data(label)',
                     'text-wrap': 'ellipsis',
                     'text-max-width': '200px',
@@ -512,6 +549,9 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
             'selector': '.Action',
             'style': {
                 'background-color': '#b3de69',
+                'border-color':'black',
+                                'border-width':'1',
+
                 'content': 'data(label)',
                     'text-wrap': 'ellipsis',
                     'text-max-width': '200px',
@@ -526,6 +566,9 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
             'selector': '.Issue',
             'style': {
                 'background-color': '#80b1d3',
+                'border-color':'black',
+                                'border-width':'1',
+
                 'content': 'data(label)',
                     'text-wrap': 'ellipsis',
                     'text-max-width': '200px',
@@ -540,6 +583,9 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                 'selector': '.Method',
                 'style':{
                     'background-color': '#ffffb3',
+                    'border-color':'black',
+                                    'border-width':'1',
+
                     'content': 'data(label)',
                     'text-wrap': 'ellipsis',
                     'text-max-width': '200px',
@@ -554,6 +600,9 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
             'selector': '.Place',
             'style': {
                 'background-color': '#fdb462',
+                'border-color':'black',
+                                'border-width':'1',
+
                     'content': 'data(label)',
                     'text-wrap': 'ellipsis',
                     'text-max-width': '200px',
@@ -568,6 +617,9 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
             'selector': '.Publication',
             'style': {
                 'background-color': '#8dd3c7',
+                'border-color':'black',
+                                'border-width':'1',
+
                     'content': 'data(label)',
                     'text-wrap': 'ellipsis',
                     'text-max-width': '200px',
@@ -582,6 +634,9 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
             'selector': '.Literal',
             'style': {
                 'background-color': '#d9d9d9',
+                'border-color':'black',
+                                'border-width':'1',
+
                     'content': 'data(label)',
                     'text-wrap': 'ellipsis',
                     'text-max-width': '200px',
@@ -597,6 +652,8 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
             'selector': ':selected',
             'style': {
                 'background-color': '#bc80bd',
+                'border-width':'1',
+                'border-color':'black',
                     'content': 'data(label)',
                     'text-wrap': 'ellipsis',
                     'text-max-width': '200px',
