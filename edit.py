@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Sat Aug 21 15:17:26 2021
+Created on Sun Sep  5 14:42:41 2021
 
 @author: ollie
 """
@@ -98,7 +98,7 @@ dd_style=[
 all_style = [
                 {
                 'selector': 'edge',
-                'style': {'width':'4',
+                'style': {'width':'2',
                       #     'line-fill':'linear-gradient',
                       #                           "line-gradient-stop-colors": "black grey",
                       # "line-gradient-stop-positions": "5 60",
@@ -106,11 +106,19 @@ all_style = [
                     'content': 'data(label)',
                     'text-rotation':'autorotate',
                                         'text-opacity': '1',
-
-                    'opacity': '0.7',
+                    'target-distance-from-node':'5px',
+                    'text-background-shape':'rounded-rectangle',
+                    'text-background-color':'white',
+                    'text-background-opacity':0.7,
+                    'source-endpoint':'outside-to-node-or-label',
+                    'target-endpoint':'outside-to-node-or-label',
+                    'line-opacity': '0.7',
                     'curve-style': 'bezier',
+                                        'control-point-step-size':'100',
+                                        'control-point-weight':0.2,
+
                     'target-arrow-shape': 'vee',
-                    'arrow-scale': 2
+                    'arrow-scale': 3
                 }},
                 {
                 'selector': 'edge[label="equivalentClass"]',
@@ -137,13 +145,13 @@ all_style = [
                                 'border-width':'1',
                     'shape':'star',
                 'content': 'data(label)',
-                    'text-wrap': 'ellipsis',
+                    'text-wrap': 'wrap',
                     'text-max-width': '200px',
                     'text-overflow-wrap': 'whitespace',
                     'text-valign': 'bottom',
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.2',
+                    'text-background-opacity': '0.7',
             }
         }, 
                   {
@@ -154,13 +162,13 @@ all_style = [
                                 'border-width':'1',
                 'shape':'triangle',
                 'content': 'data(label)',
-                    'text-wrap': 'ellipsis',
+                    'text-wrap': 'wrap',
                     'text-max-width': '200px',
                     'text-overflow-wrap': 'whitespace',
                     'text-valign': 'bottom',
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.2',
+                    'text-background-opacity': '0.7',
             }
         }, 
                     {
@@ -171,13 +179,13 @@ all_style = [
                                 'border-width':'1',
                 'shape':'rectangle',
                 'content': 'data(label)',
-                    'text-wrap': 'ellipsis',
+                    'text-wrap': 'wrap',
                     'text-max-width': '200px',
                     'text-overflow-wrap': 'whitespace',
                     'text-valign': 'bottom',
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.2',
+                    'text-background-opacity': '0.7',
             }
         }, 
             {
@@ -188,13 +196,13 @@ all_style = [
                                     'border-width':'1',
                     'shape':'ellipse',
                     'content': 'data(label)',
-                    'text-wrap': 'ellipsis',
+                    'text-wrap': 'wrap',
                     'text-max-width': '200px',
                     'text-overflow-wrap': 'whitespace',
                     'text-valign': 'bottom',
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.2'
+                    'text-background-opacity': '0.7'
                     }
                 },
             {
@@ -205,13 +213,13 @@ all_style = [
                                 'border-width':'1',
                     'shape':'vee',
                     'content': 'data(label)',
-                    'text-wrap': 'ellipsis',
+                    'text-wrap': 'wrap',
                     'text-max-width': '200px',
                     'text-overflow-wrap': 'whitespace',
                     'text-valign': 'bottom',
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.2'
+                    'text-background-opacity': '0.7'
             }
         }, 
         {
@@ -222,13 +230,13 @@ all_style = [
                                 'border-width':'1',
                         'shape':'diamond',
                     'content': 'data(label)',
-                    'text-wrap': 'ellipsis',
+                    'text-wrap': 'wrap',
                     'text-max-width': '200px',
                     'text-overflow-wrap': 'whitespace',
                     'text-valign': 'bottom',
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.2'
+                    'text-background-opacity': '0.7'
             }
         }, 
             {
@@ -245,7 +253,7 @@ all_style = [
                     'text-valign': 'bottom',
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.2'
+                    'text-background-opacity': '0.7'
             }
         }, 
             
@@ -257,13 +265,13 @@ all_style = [
                                 'border-width':'1',
 
                     'content': 'data(label)',
-                    'text-wrap': 'ellipsis',
+                    'text-wrap': 'wrap',
                     'text-max-width': '200px',
                     'text-overflow-wrap': 'whitespace',
                     'text-valign': 'bottom',
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.2'
+                    'text-background-opacity': '0.7'
             }
         },
         ]
@@ -499,7 +507,7 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
     all_style = [
                 {
                 'selector': 'edge',
-                'style': {'width':'4',
+                'style': {'width':'2',
                       #     'line-fill':'linear-gradient',
                       #                           "line-gradient-stop-colors": "black grey",
                       # "line-gradient-stop-positions": "5 60",
@@ -507,9 +515,17 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     'content': 'data(label)',
                     'text-rotation':'autorotate',
                                         'text-opacity': '1',
+                    'text-background-shape':'rounded-rectangle',
+                    'text-background-color':'white',
+                    'text-background-opacity':0.7,
 
-                    'opacity': '0.7',
+                    'target-distance-from-node':'5px',
+                    'source-endpoint':'outside-to-node-or-label',
+                    'target-endpoint':'outside-to-node-or-label',
+                    'line-opacity': '0.7',
                     'curve-style': 'bezier',
+                    'control-point-step-size':'100',
+                     'control-point-weight':0.2,
                     'target-arrow-shape': 'vee',
                     'arrow-scale': 2
                 }},
@@ -538,13 +554,13 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                                 'border-width':'1',
                     'shape':'star',
                 'content': 'data(label)',
-                    'text-wrap': 'ellipsis',
+                    'text-wrap': 'wrap',
                     'text-max-width': '200px',
                     'text-overflow-wrap': 'whitespace',
                     'text-valign': 'bottom',
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.2',
+                    'text-background-opacity': '0.7',
             }
         }, 
                   {
@@ -555,13 +571,13 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                                 'border-width':'1',
                 'shape':'triangle',
                 'content': 'data(label)',
-                    'text-wrap': 'ellipsis',
+                    'text-wrap': 'wrap',
                     'text-max-width': '200px',
                     'text-overflow-wrap': 'whitespace',
                     'text-valign': 'bottom',
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.2',
+                    'text-background-opacity': '0.7',
             }
         }, 
                     {
@@ -572,13 +588,13 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                                 'border-width':'1',
                 'shape':'rectangle',
                 'content': 'data(label)',
-                    'text-wrap': 'ellipsis',
+                    'text-wrap': 'wrap',
                     'text-max-width': '200px',
                     'text-overflow-wrap': 'whitespace',
                     'text-valign': 'bottom',
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.2',
+                    'text-background-opacity': '0.7',
             }
         }, 
             {
@@ -589,13 +605,13 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                                     'border-width':'1',
                     'shape':'ellipse',
                     'content': 'data(label)',
-                    'text-wrap': 'ellipsis',
+                    'text-wrap': 'wrap',
                     'text-max-width': '200px',
                     'text-overflow-wrap': 'whitespace',
                     'text-valign': 'bottom',
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.2'
+                    'text-background-opacity': '0.7'
                     }
                 },
             {
@@ -606,13 +622,13 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                                 'border-width':'1',
                     'shape':'vee',
                     'content': 'data(label)',
-                    'text-wrap': 'ellipsis',
+                    'text-wrap': 'wrap',
                     'text-max-width': '200px',
                     'text-overflow-wrap': 'whitespace',
                     'text-valign': 'bottom',
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.2'
+                    'text-background-opacity': '0.7'
             }
         }, 
         {
@@ -623,13 +639,13 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                                 'border-width':'1',
                         'shape':'diamond',
                     'content': 'data(label)',
-                    'text-wrap': 'ellipsis',
+                    'text-wrap': 'wrap',
                     'text-max-width': '200px',
                     'text-overflow-wrap': 'whitespace',
                     'text-valign': 'bottom',
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.2'
+                    'text-background-opacity': '0.7'
             }
         }, 
             {
@@ -658,13 +674,13 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                                 'border-width':'1',
 
                     'content': 'data(label)',
-                    'text-wrap': 'ellipsis',
+                    'text-wrap': 'wrap',
                     'text-max-width': '200px',
                     'text-overflow-wrap': 'whitespace',
                     'text-valign': 'bottom',
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.2'
+                    'text-background-opacity': '0.7'
             }
         },
         ]
