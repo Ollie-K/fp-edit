@@ -1312,17 +1312,17 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                 stylesheet.append({"selector": 'edge[id= "{}"]'.format(edge['id']),
                 "style": {"line-color": '#bebada',
                           'target-arrow-color':'#bebada',
-                          'width':'7'}})
+                          'width':'3'}})
             if edge['target'] == tapnode['data']['id']: 
                 stylesheet.append({"selector": 'edge[id= "{}"]'.format(edge['id']),
                 "style": {"line-color": '#fccde5',
                           'target-arrow-color':'#fccde5',
-                          'width':'7'}})
+                          'width':'3'}})
     if data_e:
         for edge in data_e:
                 stylesheet.append({"selector": 'edge[id= "{}"]'.format(edge['id']), "style": {"line-color": '#bc80bd',
                           'target-arrow-color':'#bc80bd',
-                          'width':'7'}})
+                          'width':'3'}})
         return (elements, layout, stylesheet)
     
     return (elements, layout, stylesheet)
