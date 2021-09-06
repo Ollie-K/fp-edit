@@ -98,7 +98,7 @@ dd_style=[
 all_style = [
                 {
                 'selector': 'edge',
-                'style': {'width':'2',
+                'style': {'width':'1',
                       #     'line-fill':'linear-gradient',
                       #                           "line-gradient-stop-colors": "black grey",
                       # "line-gradient-stop-positions": "5 60",
@@ -106,21 +106,23 @@ all_style = [
                     'content': 'data(label)',
                     'text-rotation':'autorotate',
                                         'text-opacity': 0.8,
-                    'target-distance-from-node':'5px',
                     'text-background-shape':'rounded-rectangle',
                     'text-background-color':'white',
                     'text-background-opacity':0.7,
+                    'font-family':'helvetica',
                     'font-style':'italic',
-                    'font-size': 12,
+                    'font-size': 11,
+                    'font-weight':'thin',
+
+                    'target-distance-from-node':'5px',
                     'source-endpoint':'outside-to-node-or-label',
                     'target-endpoint':'outside-to-node-or-label',
                     'line-opacity': '0.7',
                     'curve-style': 'bezier',
-                                        'control-point-step-size':'100',
-                                        'control-point-weight':0.2,
-
+                    'control-point-step-size':'100',
+                     'control-point-weight':0.2,
                     'target-arrow-shape': 'vee',
-                    'arrow-scale': 3
+                    'arrow-scale': 2
                 }},
                 {
                 'selector': 'edge[label="equivalentClass"]',
@@ -154,6 +156,11 @@ all_style = [
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
                     'text-background-opacity': '0.7',
+                    'font-size': 14,
+                    'font-weight':'bold',
+                    'font-family':'times-new-roman',
+
+
             }
         }, 
                   {
@@ -172,6 +179,9 @@ all_style = [
                     'text-background-shape': 'round-rectangle',
                     'text-background-opacity': '0.7',
                     'font-size': 14,
+                    'font-weight':'bold',
+                    'font-family':'times-new-roman',
+
 
             }
         }, 
@@ -190,7 +200,10 @@ all_style = [
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
                     'text-background-opacity': '0.7',
-                                        'font-size': 14,
+                    'font-size': 14,
+                    'font-weight':'bold',
+                    'font-family':'times-new-roman',
+
 
             }
         }, 
@@ -209,7 +222,10 @@ all_style = [
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
                     'text-background-opacity': '0.7',
-                                        'font-size': 14,
+                    'font-size': 14,
+                    'font-weight':'bold',
+                    'font-family':'times-new-roman',
+
 
                     }
                 },
@@ -228,7 +244,10 @@ all_style = [
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
                     'text-background-opacity': '0.7',
-                                        'font-size': 14,
+                    'font-size': 14,
+                    'font-weight':'bold',
+                    'font-family':'times-new-roman',
+
 
             }
         }, 
@@ -247,7 +266,10 @@ all_style = [
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
                     'text-background-opacity': '0.7',
-                                        'font-size': 14,
+                    'font-size': 14,
+                    'font-weight':'bold',
+                    'font-family':'times-new-roman',
+
 
             }
         }, 
@@ -265,8 +287,12 @@ all_style = [
                     'text-valign': 'top',
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.7',
-                                        'font-size': 14,
+                    'text-background-opacity': '0.2',
+                    'font-size': 14,
+                    
+                    'font-weight':'bold',
+                    'font-family':'times-new-roman',
+
 
             }
         }, 
@@ -286,7 +312,10 @@ all_style = [
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
                     'text-background-opacity': '0.7',
-                                        'font-size': 14,
+                    'font-size': 14,
+                    'font-weight':'bold',
+                    'font-family':'times-new-roman',
+
 
             }
         },
@@ -523,7 +552,7 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
     all_style = [
                 {
                 'selector': 'edge',
-                'style': {'width':'2',
+                'style': {'width':'1',
                       #     'line-fill':'linear-gradient',
                       #                           "line-gradient-stop-colors": "black grey",
                       # "line-gradient-stop-positions": "5 60",
@@ -534,8 +563,11 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     'text-background-shape':'rounded-rectangle',
                     'text-background-color':'white',
                     'text-background-opacity':0.7,
+                    'font-family':'helvetica',
                     'font-style':'italic',
-                    'font-size': 12,
+                    'font-size': 11,
+                    'font-weight':'thin',
+
 
                     'target-distance-from-node':'5px',
                     'source-endpoint':'outside-to-node-or-label',
@@ -579,7 +611,10 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
                     'text-background-opacity': '0.7',
-                                        'font-size': 14,
+                    'font-size': 14,
+                    'font-weight':'bold',
+                    'font-family':'times-new-roman',
+
 
             }
         }, 
@@ -598,7 +633,10 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
                     'text-background-opacity': '0.7',
-                                        'font-size': 14,
+                    'font-size': 14,
+                    'font-weight':'bold',
+                    'font-family':'times-new-roman',
+
 
             }
         }, 
@@ -617,7 +655,10 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
                     'text-background-opacity': '0.7',
-                                        'font-size': 14,
+                    'font-size': 14,
+                    'font-weight':'bold',
+                    'font-family':'times-new-roman',
+
 
             }
         }, 
@@ -636,7 +677,10 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
                     'text-background-opacity': '0.7',
-                                        'font-size': 14,
+                    'font-size': 14,
+                    'font-weight':'bold',
+                    'font-family':'times-new-roman',
+
 
                     }
                 },
@@ -655,7 +699,10 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
                     'text-background-opacity': '0.7',
-                                        'font-size': 14,
+                    'font-size': 14,
+                    'font-weight':'bold',
+                    'font-family':'times-new-roman',
+
 
             }
         }, 
@@ -674,7 +721,10 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
                     'text-background-opacity': '0.7',
-                                        'font-size': 14,
+                    'font-size': 14,
+                    'font-weight':'bold',
+                    'font-family':'times-new-roman',
+
 
             }
         }, 
@@ -693,7 +743,11 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
                     'text-background-opacity': '0.2',
-                                        'font-size': 14,
+                    'font-size': 14,
+                    
+                    'font-weight':'bold',
+                    'font-family':'times-new-roman',
+
 
             }
         }, 
@@ -713,7 +767,10 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     'text-background-color': '#FFFFFF',
                     'text-background-shape': 'round-rectangle',
                     'text-background-opacity': '0.7',
-                                        'font-size': 14,
+                    'font-size': 14,
+                    'font-weight':'bold',
+                    'font-family':'times-new-roman',
+
 
             }
         },
