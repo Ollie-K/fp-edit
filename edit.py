@@ -115,14 +115,14 @@ all_style = [
                     'font-weight':'thin',
 
                     'target-distance-from-node':'5px',
-                    'source-endpoint':'outside-to-node-or-label',
                     'target-endpoint':'outside-to-node-or-label',
                     'line-opacity': '0.7',
                     'curve-style': 'bezier',
                     'control-point-step-size':'100',
                      'control-point-weight':0.2,
                     'target-arrow-shape': 'vee',
-                    'arrow-scale': 2
+                    'arrow-scale': 2,
+                    'min-zoomed-font-size':16,
                 }},
                 {
                 'selector': 'edge[label="equivalentClass"]',
@@ -144,6 +144,8 @@ all_style = [
                 {
             'selector': '.Actor',
             'style': {
+                'width':'20',
+                'height':'20',
                 'background-color': '#fb8072',
                 'border-color':'black',
                                 'border-width':'1',
@@ -159,13 +161,16 @@ all_style = [
                     'font-size': 14,
                     'font-weight':'bold',
                     'font-family':'times-new-roman',
+                    'min-zoomed-font-size':16,
 
 
             }
         }, 
                   {
             'selector': '.Action',
-            'style': {
+            'style': {                
+                'width':'20',
+                'height':'20',
                 'background-color': '#b3de69',
                 'border-color':'black',
                                 'border-width':'1',
@@ -181,6 +186,7 @@ all_style = [
                     'font-size': 14,
                     'font-weight':'bold',
                     'font-family':'times-new-roman',
+                    'min-zoomed-font-size':16,
 
 
             }
@@ -188,6 +194,8 @@ all_style = [
                     {
             'selector': '.Issue',
             'style': {
+                'width':'20',
+                'height':'20',
                 'background-color': '#80b1d3',
                 'border-color':'black',
                                 'border-width':'1',
@@ -203,6 +211,7 @@ all_style = [
                     'font-size': 14,
                     'font-weight':'bold',
                     'font-family':'times-new-roman',
+                    'min-zoomed-font-size':16,
 
 
             }
@@ -210,6 +219,8 @@ all_style = [
             {
                 'selector': '.Method',
                 'style':{
+                    'width':'20',
+                'height':'20',
                     'background-color': '#ffffb3',
                     'border-color':'black',
                                     'border-width':'1',
@@ -225,13 +236,16 @@ all_style = [
                     'font-size': 14,
                     'font-weight':'bold',
                     'font-family':'times-new-roman',
+                    'min-zoomed-font-size':16,
 
 
                     }
                 },
             {
             'selector': '.Place',
-            'style': {
+            'style': {        
+                'width':'20',
+                'height':'20',
                 'background-color': '#fdb462',
                 'border-color':'black',
                                 'border-width':'1',
@@ -247,13 +261,16 @@ all_style = [
                     'font-size': 14,
                     'font-weight':'bold',
                     'font-family':'times-new-roman',
+                    'min-zoomed-font-size':16,
 
 
             }
         }, 
         {
             'selector': '.Publication',
-            'style': {
+            'style': {        
+                'width':'20',
+                'height':'20',
                 'background-color': '#8dd3c7',
                 'border-color':'black',
                                 'border-width':'1',
@@ -269,13 +286,16 @@ all_style = [
                     'font-size': 14,
                     'font-weight':'bold',
                     'font-family':'times-new-roman',
+                    'min-zoomed-font-size':16,
 
 
             }
         }, 
             {
             'selector': '.Literal',
-            'style': {
+            'style': {        
+                'width':'20',
+                'height':'20',
                 'background-color': '#d9d9d9',
                 'border-color':'black',
                                 'border-width':'1',
@@ -292,6 +312,7 @@ all_style = [
                     
                     'font-weight':'bold',
                     'font-family':'times-new-roman',
+                    'min-zoomed-font-size':16,
 
 
             }
@@ -299,7 +320,9 @@ all_style = [
             
             {
             'selector': ':selected',
-            'style': {
+            'style': {        
+                'width':'20',
+                'height':'20',
                 'background-color': '#bc80bd',
                 'border-color':'black',
                                 'border-width':'1',
@@ -514,7 +537,8 @@ app.layout = html.Div([
                 State('food-pol-net', 'stylesheet'),
                 State('search-box', 'value'),
                 State('food-pol-net', 'selectedNodeData'),
-                State('food-pol-net', 'selectedEdgeData')]
+                State('food-pol-net', 'selectedEdgeData'),
+                ]
               )
 def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, onto_button, path_button, map_button, aa_path, display, nodes, edges, search_button, remove_button, expand_button, focus, elements, layout, stylesheet, search_term, data_n, data_e):
     dd_style=[
@@ -570,14 +594,14 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
 
 
                     'target-distance-from-node':'5px',
-                    'source-endpoint':'outside-to-node-or-label',
                     'target-endpoint':'outside-to-node-or-label',
                     'line-opacity': '0.7',
                     'curve-style': 'bezier',
                     'control-point-step-size':'100',
                      'control-point-weight':0.2,
                     'target-arrow-shape': 'vee',
-                    'arrow-scale': 2
+                    'arrow-scale': 2,
+                    'min-zoomed-font-size':16,
                 }},
                 {
                 'selector': 'edge[label="equivalentClass"]',
@@ -599,6 +623,10 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                 {
             'selector': '.Actor',
             'style': {
+                'width':'20',
+                'height':'20',
+                'width':'20',
+                'height':'20',
                 'background-color': '#fb8072',
                 'border-color':'black',
                                 'border-width':'1',
@@ -614,6 +642,7 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     'font-size': 14,
                     'font-weight':'bold',
                     'font-family':'times-new-roman',
+                    'min-zoomed-font-size':16,
 
 
             }
@@ -621,6 +650,8 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                   {
             'selector': '.Action',
             'style': {
+                'width':'20',
+                'height':'20',
                 'background-color': '#b3de69',
                 'border-color':'black',
                                 'border-width':'1',
@@ -636,6 +667,7 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     'font-size': 14,
                     'font-weight':'bold',
                     'font-family':'times-new-roman',
+                    'min-zoomed-font-size':16,
 
 
             }
@@ -643,6 +675,8 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     {
             'selector': '.Issue',
             'style': {
+                'width':'20',
+                'height':'20',
                 'background-color': '#80b1d3',
                 'border-color':'black',
                                 'border-width':'1',
@@ -658,6 +692,7 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     'font-size': 14,
                     'font-weight':'bold',
                     'font-family':'times-new-roman',
+                    'min-zoomed-font-size':16,
 
 
             }
@@ -665,6 +700,8 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
             {
                 'selector': '.Method',
                 'style':{
+                    'width':'20',
+                    'height':'20',
                     'background-color': '#ffffb3',
                     'border-color':'black',
                                     'border-width':'1',
@@ -680,6 +717,7 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     'font-size': 14,
                     'font-weight':'bold',
                     'font-family':'times-new-roman',
+                    'min-zoomed-font-size':16,
 
 
                     }
@@ -687,6 +725,8 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
             {
             'selector': '.Place',
             'style': {
+                'width':'20',
+                'height':'20',
                 'background-color': '#fdb462',
                 'border-color':'black',
                                 'border-width':'1',
@@ -702,6 +742,7 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     'font-size': 14,
                     'font-weight':'bold',
                     'font-family':'times-new-roman',
+                    'min-zoomed-font-size':16,
 
 
             }
@@ -709,6 +750,8 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
         {
             'selector': '.Publication',
             'style': {
+                'width':'20',
+                'height':'20',
                 'background-color': '#8dd3c7',
                 'border-color':'black',
                                 'border-width':'1',
@@ -724,6 +767,7 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     'font-size': 14,
                     'font-weight':'bold',
                     'font-family':'times-new-roman',
+                    'min-zoomed-font-size':16,
 
 
             }
@@ -731,6 +775,8 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
             {
             'selector': '.Literal',
             'style': {
+                'width':'20',
+                'height':'20',
                 'background-color': '#d9d9d9',
                 'border-color':'black',
                                 'border-width':'1',
@@ -747,6 +793,7 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
                     
                     'font-weight':'bold',
                     'font-family':'times-new-roman',
+                    'min-zoomed-font-size':16,
 
 
             }
@@ -755,6 +802,8 @@ def function(tapnode, tapedge, full_button, nname, nclass, ngen, ename, egen, on
             {
             'selector': ':selected',
             'style': {
+                'width':'20',
+                'height':'20',
                 'background-color': '#bc80bd',
                 'border-color':'black',
                                 'border-width':'1',
