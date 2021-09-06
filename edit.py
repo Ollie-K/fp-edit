@@ -24,21 +24,27 @@ import Levenshtein as lev
 import dash_cytoscape as cyto
 
 g = Graph()
+#import knowledge graph
 g.parse("13-8-inference.ttl", format="ttl")
+#import table of all nodes for similarity-scoring
 node_lex = pd.read_csv('13-8-nodes.csv')
 
 def sim_score(a, b):
+    #function for computing standardised lexical similarity scores
+    #put both terms into lowercase to remove case sensitivity
     a = a.lower()
     b = b.lower()
+    #set the denominator as the longer term length to avoid values greater than 1
     denom = len(b)
     if len(a) > len(b):
         denom = len(a)
+    #calculate the levenshtein distance as a proportion of the longer term length
     c = (lev.distance(a, b) / denom)
     return c
 
 
 
-
+#setting up dash cytoscape
 asset_path = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
     '..', 'assets'
@@ -48,13 +54,15 @@ app = dash.Dash(__name__, assets_folder=asset_path)
 server = app.server
 cyto.load_extra_layouts()
 
-    
+#import json of precomputed positions for class hierarchy view
 with open('onto-positions.json') as f:
     onto_elements = json.loads(f.read())
 
+#import json of precomputed positions for class schema view
 with open('map_pos.json') as f:
     map_elements = json.loads(f.read())
 
+#default html styling elements
 styles = {
     'json-output': {
         'overflow-y': 'scroll',
@@ -63,6 +71,7 @@ styles = {
     },
     'tab': {'height': 'calc(20vh-100px)'}
 }
+#stylesheet for hiding some classes exclusive to Literature Review data
 dd_style=[
                 {
             'selector': '.Academic',
@@ -95,292 +104,289 @@ dd_style=[
         }, 
         ]    
 
+#default stylesheet
 all_style = [
                 {
                 'selector': 'edge',
                 'style': {'width':'1',
-                      #     'line-fill':'linear-gradient',
-                      #                           "line-gradient-stop-colors": "black grey",
-                      # "line-gradient-stop-positions": "5 60",
-                      
-                    'content': 'data(label)',
-                    'text-rotation':'autorotate',
-                                        'text-opacity': 0.8,
-                    'text-background-shape':'rounded-rectangle',
-                    'text-background-color':'white',
-                    'text-background-opacity':0.7,
-                    'font-family':'helvetica',
-                    'font-style':'italic',
-                    'font-size': 11,
-                    'font-weight':'thin',
-
-                    'target-distance-from-node':'5px',
-                    'target-endpoint':'outside-to-node-or-label',
-                    'line-opacity': '0.7',
-                    'curve-style': 'bezier',
-                    'control-point-step-size':'100',
-                     'control-point-weight':0.2,
-                    'target-arrow-shape': 'vee',
-                    'arrow-scale': 2,
-                    'min-zoomed-font-size':16,
-                }},
+                          'content': 'data(label)',
+                          'text-rotation':'autorotate',
+                          'text-opacity': 0.8,
+                          'text-background-shape':'rounded-rectangle',
+                          'text-background-color':'white',
+                          'text-background-opacity':0.7,
+                          'font-family':'helvetica',
+                          'font-style':'italic',
+                          'font-size': 11,
+                          'font-weight':'thin',
+                          'target-distance-from-node':'5px',
+                          'target-endpoint':'outside-to-node-or-label',
+                          'line-opacity': '0.7',
+                          'curve-style': 'bezier',
+                          'control-point-step-size':'100',
+                          'control-point-weight':0.2,
+                          'target-arrow-shape': 'vee',
+                          'arrow-scale': 2,
+                          'min-zoomed-font-size':16,
+                          }
+                },
+              
                 {
                 'selector': 'edge[label="equivalentClass"]',
                 'style': {
-                    'visibility': 'hidden'
-                }},
+                        'visibility': 'hidden'
+                        }
+                },
                 
-                                {
+                {
                 'selector': 'node[label="Thing"]',
                 'style': {
-                    'display': 'none'
-                }},
+                        'display': 'none'
+                        }
+                },
                                 
-                                                {
+                {
                 'selector': 'node[label="Nothing"]',
                 'style': {
-                    'display': 'none'
-                }},
-                {
-            'selector': '.Actor',
-            'style': {
-                'width':'20',
-                'height':'20',
-                'background-color': '#fb8072',
-                'border-color':'black',
-                                'border-width':'1',
-                    'shape':'star',
-                'content': 'data(label)',
-                    'text-wrap': 'wrap',
-                    'text-max-width': '200px',
-                    'text-overflow-wrap': 'whitespace',
-                    'text-valign': 'top',
-                    'text-background-color': '#FFFFFF',
-                    'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.7',
-                    'font-size': 14,
-                    'font-weight':'bold',
-                    'font-family':'times-new-roman',
-                    'min-zoomed-font-size':16,
-
-
-            }
-        }, 
-                  {
-            'selector': '.Action',
-            'style': {                
-                'width':'20',
-                'height':'20',
-                'background-color': '#b3de69',
-                'border-color':'black',
-                                'border-width':'1',
-                'shape':'triangle',
-                'content': 'data(label)',
-                    'text-wrap': 'wrap',
-                    'text-max-width': '200px',
-                    'text-overflow-wrap': 'whitespace',
-                    'text-valign': 'top',
-                    'text-background-color': '#FFFFFF',
-                    'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.7',
-                    'font-size': 14,
-                    'font-weight':'bold',
-                    'font-family':'times-new-roman',
-                    'min-zoomed-font-size':16,
-
-
-            }
-        }, 
-                    {
-            'selector': '.Issue',
-            'style': {
-                'width':'20',
-                'height':'20',
-                'background-color': '#80b1d3',
-                'border-color':'black',
-                                'border-width':'1',
-                'shape':'rectangle',
-                'content': 'data(label)',
-                    'text-wrap': 'wrap',
-                    'text-max-width': '200px',
-                    'text-overflow-wrap': 'whitespace',
-                    'text-valign': 'top',
-                    'text-background-color': '#FFFFFF',
-                    'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.7',
-                    'font-size': 14,
-                    'font-weight':'bold',
-                    'font-family':'times-new-roman',
-                    'min-zoomed-font-size':16,
-
-
-            }
-        }, 
-            {
-                'selector': '.Method',
-                'style':{
-                    'width':'20',
-                'height':'20',
-                    'background-color': '#ffffb3',
-                    'border-color':'black',
-                                    'border-width':'1',
-                    'shape':'ellipse',
-                    'content': 'data(label)',
-                    'text-wrap': 'wrap',
-                    'text-max-width': '200px',
-                    'text-overflow-wrap': 'whitespace',
-                    'text-valign': 'top',
-                    'text-background-color': '#FFFFFF',
-                    'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.7',
-                    'font-size': 14,
-                    'font-weight':'bold',
-                    'font-family':'times-new-roman',
-                    'min-zoomed-font-size':16,
-
-
-                    }
+                        'display': 'none'
+                        }
                 },
-            {
-            'selector': '.Place',
-            'style': {        
-                'width':'20',
-                'height':'20',
-                'background-color': '#fdb462',
-                'border-color':'black',
-                                'border-width':'1',
-                    'shape':'vee',
-                    'content': 'data(label)',
-                    'text-wrap': 'wrap',
-                    'text-max-width': '200px',
-                    'text-overflow-wrap': 'whitespace',
-                    'text-valign': 'top',
-                    'text-background-color': '#FFFFFF',
-                    'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.7',
-                    'font-size': 14,
-                    'font-weight':'bold',
-                    'font-family':'times-new-roman',
-                    'min-zoomed-font-size':16,
-
-
-            }
-        }, 
-        {
-            'selector': '.Publication',
-            'style': {        
-                'width':'20',
-                'height':'20',
-                'background-color': '#8dd3c7',
-                'border-color':'black',
-                                'border-width':'1',
-                        'shape':'diamond',
-                    'content': 'data(label)',
-                    'text-wrap': 'wrap',
-                    'text-max-width': '200px',
-                    'text-overflow-wrap': 'whitespace',
-                    'text-valign': 'top',
-                    'text-background-color': '#FFFFFF',
-                    'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.7',
-                    'font-size': 14,
-                    'font-weight':'bold',
-                    'font-family':'times-new-roman',
-                    'min-zoomed-font-size':16,
-
-
-            }
-        }, 
-            {
-            'selector': '.Literal',
-            'style': {        
-                'width':'20',
-                'height':'20',
-                'background-color': '#d9d9d9',
-                'border-color':'black',
-                                'border-width':'1',
-                    'shape':'concave-hexagon',
-                    'content': 'data(label)',
-                    'text-wrap': 'ellipsis',
-                    'text-max-width': '200px',
-                    'text-overflow-wrap': 'whitespace',
-                    'text-valign': 'top',
-                    'text-background-color': '#FFFFFF',
-                    'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.2',
-                    'font-size': 14,
-                    
-                    'font-weight':'bold',
-                    'font-family':'times-new-roman',
-                    'min-zoomed-font-size':16,
-
-
-            }
-        }, 
+                                                
+                {
+                    'selector': '.Actor',
+                    'style': {
+                            'width':'20',
+                            'height':'20',
+                            'background-color': '#fb8072',
+                            'border-color':'black',
+                            'border-width':'1',
+                            'shape':'star',
+                            'content': 'data(label)',
+                            'text-wrap': 'wrap',
+                            'text-max-width': '200px',
+                            'text-overflow-wrap': 'whitespace',
+                            'text-valign': 'top',
+                            'text-background-color': '#FFFFFF',
+                            'text-background-shape': 'round-rectangle',
+                            'text-background-opacity': '0.7',
+                            'font-size': 14,
+                            'font-weight':'bold',
+                            'font-family':'times-new-roman',
+                            'min-zoomed-font-size':16,
+                            }   
+                },
+                
+                  {
+                      'selector': '.Action',
+                      'style': {                
+                              'width':'20',
+                              'height':'20',
+                              'background-color': '#b3de69',
+                              'border-color':'black',
+                              'border-width':'1',
+                              'shape':'triangle',
+                              'content': 'data(label)',
+                              'text-wrap': 'wrap',
+                              'text-max-width': '200px',
+                              'text-overflow-wrap': 'whitespace',
+                              'text-valign': 'top',
+                              'text-background-color': '#FFFFFF',
+                              'text-background-shape': 'round-rectangle',
+                              'text-background-opacity': '0.7',
+                              'font-size': 14,
+                              'font-weight':'bold',
+                              'font-family':'times-new-roman',
+                              'min-zoomed-font-size':16,
+                              }
+                  }, 
+                  
+                  {
+                      'selector': '.Issue',
+                      'style': {
+                              'width':'20',
+                              'height':'20',
+                              'background-color': '#80b1d3',
+                              'border-color':'black',
+                              'border-width':'1',
+                              'shape':'rectangle',
+                              'content': 'data(label)',
+                              'text-wrap': 'wrap',
+                              'text-max-width': '200px',
+                              'text-overflow-wrap': 'whitespace',
+                              'text-valign': 'top',
+                              'text-background-color': '#FFFFFF',
+                              'text-background-shape': 'round-rectangle',
+                              'text-background-opacity': '0.7',
+                              'font-size': 14,
+                              'font-weight':'bold',
+                              'font-family':'times-new-roman',
+                              'min-zoomed-font-size':16,
+                              }
+                  }, 
+                  
+                  {
+                      'selector': '.Method',
+                      'style':{
+                              'width':'20',
+                              'height':'20',
+                              'background-color': '#ffffb3',
+                              'border-color':'black',
+                              'border-width':'1',
+                              'shape':'ellipse',
+                              'content': 'data(label)',
+                              'text-wrap': 'wrap',
+                              'text-max-width': '200px',
+                              'text-overflow-wrap': 'whitespace',
+                              'text-valign': 'top',
+                              'text-background-color': '#FFFFFF',
+                              'text-background-shape': 'round-rectangle',
+                              'text-background-opacity': '0.7',
+                              'font-size': 14,
+                              'font-weight':'bold',
+                              'font-family':'times-new-roman',
+                              'min-zoomed-font-size':16,
+                              }
+                },
+                  
+                  {
+                      'selector': '.Place',
+                      'style': {        
+                              'width':'20',
+                              'height':'20',
+                              'background-color': '#fdb462',
+                              'border-color':'black',
+                              'border-width':'1',
+                              'shape':'vee',
+                              'content': 'data(label)',
+                              'text-wrap': 'wrap',
+                              'text-max-width': '200px',
+                              'text-overflow-wrap': 'whitespace',
+                              'text-valign': 'top',
+                              'text-background-color': '#FFFFFF',
+                              'text-background-shape': 'round-rectangle',
+                              'text-background-opacity': '0.7',
+                              'font-size': 14,
+                              'font-weight':'bold',
+                              'font-family':'times-new-roman',
+                              'min-zoomed-font-size':16,
+                              }
+                  },
+                  
+                  {
+                      'selector': '.Publication',
+                      'style': {        
+                              'width':'20',
+                              'height':'20',
+                              'background-color': '#8dd3c7',
+                              'border-color':'black',
+                              'border-width':'1',
+                              'shape':'diamond',
+                              'content': 'data(label)',
+                              'text-wrap': 'wrap',
+                              'text-max-width': '200px',
+                              'text-overflow-wrap': 'whitespace',
+                              'text-valign': 'top',
+                              'text-background-color': '#FFFFFF',
+                              'text-background-shape': 'round-rectangle',
+                              'text-background-opacity': '0.7',
+                              'font-size': 14,
+                              'font-weight':'bold',
+                              'font-family':'times-new-roman',
+                              'min-zoomed-font-size':16,
+                              }
+                      }, 
+                  
+                  {
+                      'selector': '.Literal',
+                      'style': {        
+                              'width':'20',
+                              'height':'20',
+                              'background-color': '#d9d9d9',
+                              'border-color':'black',
+                              'border-width':'1',
+                              'shape':'concave-hexagon',
+                              'content': 'data(label)',
+                              'text-wrap': 'ellipsis',
+                              'text-max-width': '200px',
+                              'text-overflow-wrap': 'whitespace',
+                              'text-valign': 'top',
+                              'text-background-color': '#FFFFFF',
+                              'text-background-shape': 'round-rectangle',
+                              'text-background-opacity': '0.2',
+                              'font-size': 14,        
+                              'font-weight':'bold',
+                              'font-family':'times-new-roman',
+                              'min-zoomed-font-size':16,
+                              }
+                  }, 
             
-            {
-            'selector': ':selected',
-            'style': {        
-                'width':'20',
-                'height':'20',
-                'background-color': '#bc80bd',
-                'border-color':'black',
-                                'border-width':'1',
-
-                    'content': 'data(label)',
-                    'text-wrap': 'wrap',
-                    'text-max-width': '200px',
-                    'text-overflow-wrap': 'whitespace',
-                    'text-valign': 'top',
-                    'text-background-color': '#FFFFFF',
-                    'text-background-shape': 'round-rectangle',
-                    'text-background-opacity': '0.7',
-                    'font-size': 14,
-                    'font-weight':'bold',
-                    'font-family':'times-new-roman',
-
-
-            }
-        },
+                {
+                    'selector': ':selected',
+                    'style': {        
+                            'width':'20',
+                            'height':'20',
+                            'background-color': '#bc80bd',
+                            'border-color':'black',
+                            'border-width':'1',
+                            'content': 'data(label)',
+                            'text-wrap': 'wrap',
+                            'text-max-width': '200px',
+                            'text-overflow-wrap': 'whitespace',
+                            'text-valign': 'top',
+                            'text-background-color': '#FFFFFF',
+                            'text-background-shape': 'round-rectangle',
+                            'text-background-opacity': '0.7',
+                            'font-size': 14,
+                            'font-weight':'bold',
+                            'font-family':'times-new-roman',
+                            }
+                },
         ]
+
+#import json of precomputed positions for entire dataset view
 with open('positions.json') as f:
     full_data = json.loads(f.read())
 
 
-
+#layout for dash app
 app.layout = html.Div([
     html.Div(className='eight columns', children=[
         
         
-
+        #the network
           cyto.Cytoscape(
             id='food-pol-net',
+            #allow box selection using shift+click & drag
             boxSelectionEnabled= True,
-
+            #initial data = data for all nodes
             elements=full_data,
+            #initial layout is precomputed, with spacing factor of 4 for scaling
             layout={
                 'name': 'preset','spacingFactor':'4'
             },
+            #limit vertical height to allow for tabs
             style={
                 'height': '74vh',
                 'width': '100%'
             },
+            #initially hide Lit Review data
             stylesheet=all_style + dd_style
         ),
-        
+        #tabs
         html.Div(className='four columns', children=[
         dcc.Tabs(id='tabs', children=[
+            #Legend tab
             dcc.Tab(label='Legend', children=[
                 html.Div(style=styles['tab'], children=[
                     html.P(children=['Classes:',
                     html.Div(),
-                    html.Button('Actor', style={'background-color': '#fb8072', 'fontSize': 13}),
-                    html.Button('Action', style={'background-color': '#b3de69', 'fontSize': 13}),
-                    html.Button('Issue', style={'background-color': '#80b1d3', 'fontSize': 13}),
-                    html.Button('Method', style={'background-color': '#ffffb3', 'fontSize': 13}),
-                    html.Button('Place', style={'background-color': '#fdb462', 'fontSize': 13}),
-                    html.Button('Publication', style={'background-color': '#8dd3c7', 'fontSize': 13}),
-                    html.Button('Literal/Descriptive', style={'background-color': '#d9d9d9', 'fontSize': 13}),
+                    html.Button('Actor \u2606', style={'background-color': '#fb8072', 'fontSize': 13}),
+                    html.Button('Action \u25B3', style={'background-color': '#b3de69', 'fontSize': 13}),
+                    html.Button('Issue \u25A1', style={'background-color': '#80b1d3', 'fontSize': 13}),
+                    html.Button('Method \u25EF', style={'background-color': '#ffffb3', 'fontSize': 13}),
+                    html.Button('Place V', style={'background-color': '#fdb462', 'fontSize': 13}),
+                    html.Button('Publication \u25C7', style={'background-color': '#8dd3c7', 'fontSize': 13}),
+                    html.Button('Literal/Descriptive \u29D6', style={'background-color': '#d9d9d9', 'fontSize': 13}),
                     ]),
                     html.P(children=['On Selection:',
                     html.Div(),
